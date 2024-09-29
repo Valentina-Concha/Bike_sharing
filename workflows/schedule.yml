@@ -1,32 +1,31 @@
-name: Run Python script twice daily
+name: Download and Process Bike Data
 
 on:
+  workflow_dispatch:
   schedule:
-    # Ejecutar a las 8 AM y 8 PM todos los días
-    - cron: '*/2 * * * *'  # Ejecutar cada 2 minutos
-  workflow_dispatch: # Permite ejecutar el workflow manualmente desde GitHub
+    # Ejecutar cada 2 minutos
+    - cron: "*/2 * * * *"
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      # Clonar el repositorio
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Instalar Python
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.x'  # Especifica la versión de Python que necesites
 
-      # Instalar dependencias desde requirements.txt si lo tienes..
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install pandas
+          pip install openpyxl
+          pip install scipy
+          pip install git+https://github.com/eskerda/pybikes.git
 
-      # Ejecutar tu script Python
       - name: Run Python script
         run: |
-          python nombre_del_script.py
+          python automatizar_nube.py  # Asegúrate de que el nombre de tu script sea correcto
