@@ -22,9 +22,21 @@ jobs:
       run: |
         pip install pandas
         pip install openpyxl
-        pip install scipy
         pip install git+https://github.com/eskerda/pybikes.git
         pip install requests
+        pip install scipy
 
     - name: Run script
-      run: py automatizar_nube.py  # Asegúrate de que este es el nombre correcto de tu archivo
+      run: python automatizar_nube.py  # Asegúrate de que este es el nombre correcto de tu archivo
+# Aquí agregamos los pasos para subir los cambios de vuelta al repositorio
+    - name: Commit changes if the Excel file is updated
+      run: |
+        git config --local user.email "j.venegasgutierrez@gmail.com"
+        git config --local user.name "Juan"
+        git add bd_estaciones.xlsx
+        git commit -m "Update Excel file with new data" || echo "No changes to commit"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub para poder hacer push
