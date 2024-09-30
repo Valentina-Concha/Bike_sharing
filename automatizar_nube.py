@@ -53,7 +53,7 @@ if station_info_response.status_code == 200 and station_status_response.status_c
     horas = []   # Lista para almacenar la hora
 
     # Obtener la fecha y la hora actuales
-    fecha_actual = date.today(timezone)
+    fecha_actual = date.today()
     hora_actual = datetime.now(timezone)
 
     # Obtener información de estaciones
