@@ -2,7 +2,7 @@ name: Automate Data Download
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Ejecutar cada 2 minutos
+    - cron: '*/5 * * * *'  # Ejecutar cada 2 minutos
   workflow_dispatch:  # Permite ejecutar el workflow manualmente
 
 jobs:
@@ -27,6 +27,7 @@ jobs:
         pip install git+https://github.com/eskerda/pybikes.git
         pip install requests
         pip install scipy
+        pip install pytz
 
     - name: Run script
       run: python automatizar_nube.py  # Asegúrate de que este es el nombre correcto de tu archivo

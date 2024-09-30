@@ -9,6 +9,7 @@ import pybikes
 #para exportar la fecha actual de hoy
 from datetime import date
 from datetime import datetime
+import pytz
 import requests
 import pandas as pd
 #import requests: Se importa la librería requests, que se utiliza para realizar peticiones HTTP en Python. Esto permite acceder a datos de APIs (interfaces de programación de aplicaciones) que suelen ofrecer información en formato JSON.
@@ -16,6 +17,8 @@ import requests
 import pandas as pd
 from datetime import date, datetime
 from scipy.stats import skew, kurtosis
+
+timezone=pytz.timezone('America/Santiago')
 
 #station_info_url: Esta variable almacena la URL que proporciona información sobre las estaciones de bicicletas, como nombre, capacidad y ubicación.
 #station_status_url: Esta variable almacena la URL que proporciona el estado actual de las estaciones, incluyendo la disponibilidad de bicicletas y espacios.
@@ -50,8 +53,8 @@ if station_info_response.status_code == 200 and station_status_response.status_c
     horas = []   # Lista para almacenar la hora
 
     # Obtener la fecha y la hora actuales
-    fecha_actual = date.today()
-    hora_actual = datetime.now()
+    fecha_actual = date.today(timezone)
+    hora_actual = datetime.now(timezone)
 
     # Obtener información de estaciones
     #stations_info: Extrae la información sobre las estaciones desde los datos JSON.
