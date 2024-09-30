@@ -9,6 +9,7 @@ import pybikes
 #para exportar la fecha actual de hoy
 from datetime import date
 from datetime import datetime
+#pytz libreria para definir la zona horaria
 import pytz
 import requests
 import pandas as pd
@@ -17,7 +18,7 @@ import requests
 import pandas as pd
 from datetime import date, datetime
 from scipy.stats import skew, kurtosis
-
+#para traer zona horaria de america,stgo
 timezone=pytz.timezone('America/Santiago')
 
 #station_info_url: Esta variable almacena la URL que proporciona información sobre las estaciones de bicicletas, como nombre, capacidad y ubicación.
@@ -54,7 +55,7 @@ if station_info_response.status_code == 200 and station_status_response.status_c
 
     # Obtener la fecha y la hora actuales
     fecha_actual = date.today()
-    
+    #hora actual con zona horaria
     hora_actual = datetime.now(timezone).replace(tzinfo=None)
 
     # Obtener información de estaciones
@@ -126,7 +127,7 @@ print(df)
 
 # Definir el nombre del archivo
 #Para que lo descargue vinculando la misma carpeta del Git hub que es bike_sharing
-file_name = 'bd_estaciones.xlsx'
+file_name = 'bd_estacion.xlsx'
 
 # Crear el DataFrame (puedes usar tu propio DataFrame aquí)
 # df_data_countries = pd.DataFrame({"Columna1": [5, 6], "Columna2": [7, 8]})

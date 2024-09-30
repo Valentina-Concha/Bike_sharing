@@ -2,7 +2,7 @@ name: Automate Data Download
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Ejecutar cada 2 minutos
+    - cron: '0 7,19,21-23 * * *'  # Ejecutar a las 7am, 7pm, 21 pm, 11pm
   workflow_dispatch:  # Permite ejecutar el workflow manualmente
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
       run: |
         git config --local user.email "j.venegasgutierrez@gmail.com"
         git config --local user.name "Juan"
-        git add bd_estaciones.xlsx
+        git add bd_estacion.xlsx
         git commit -m "Update Excel file with new data" || echo "No changes to commit"
 
     - name: Push changes
