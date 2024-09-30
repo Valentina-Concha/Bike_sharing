@@ -54,7 +54,8 @@ if station_info_response.status_code == 200 and station_status_response.status_c
 
     # Obtener la fecha y la hora actuales
     fecha_actual = date.today()
-    hora_actual = datetime.now(timezone)
+    
+    hora_actual = datetime.now(timezone).replace(tzinfo=None)
 
     # Obtener información de estaciones
     #stations_info: Extrae la información sobre las estaciones desde los datos JSON.
