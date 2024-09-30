@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Especifica la versión de Python que necesites
+          python-version: '3.12'  # Especifica la versión de Python que necesites
 
       - name: Install dependencies
         run: |
@@ -25,6 +25,7 @@ jobs:
           pip install openpyxl
           pip install scipy
           pip install git+https://github.com/eskerda/pybikes.git
+          pip install requests
 
       - name: Run Python script
         run: |
