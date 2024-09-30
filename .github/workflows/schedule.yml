@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        ref: main # Asegúrate de hacer el checkout de la rama 'main'
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -39,4 +41,5 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
       with:
+        branch: main # Asegúrate de hacer push a la rama 'main'
         github_token: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub para poder hacer push
