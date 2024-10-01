@@ -19,7 +19,7 @@ import pandas as pd
 from datetime import date, datetime
 from scipy.stats import skew, kurtosis
 #para traer zona horaria de america,stgo
-timezone=pytz.timezone('America/Santiago')
+#timezone=pytz.timezone('America/Santiago')
 
 #station_info_url: Esta variable almacena la URL que proporciona información sobre las estaciones de bicicletas, como nombre, capacidad y ubicación.
 #station_status_url: Esta variable almacena la URL que proporciona el estado actual de las estaciones, incluyendo la disponibilidad de bicicletas y espacios.
@@ -56,7 +56,7 @@ if station_info_response.status_code == 200 and station_status_response.status_c
     # Obtener la fecha y la hora actuales
     fecha_actual = date.today()
     #hora actual con zona horaria
-    hora_actual = datetime.now(timezone).replace(tzinfo=None)
+    hora_actual = datetime.now()
 
     # Obtener información de estaciones
     #stations_info: Extrae la información sobre las estaciones desde los datos JSON.
