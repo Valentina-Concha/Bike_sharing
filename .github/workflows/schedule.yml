@@ -2,8 +2,7 @@ name: Automate Data Download
 
 on:
   schedule:
-    - cron: '0 10,22,0-2 * * *'  # A las 7am, 7pm, 9pm, 10pm, 11pm (UTC)
-    - cron: '30 1 * * *'         # A las 10:30 PM (UTC)
+    - cron: '0 10,22 * * *'  # A las 7am, 7pm, 9pm, 10pm, 11pm (UTC)
   workflow_dispatch:  # Permite ejecutar el workflow manualmente
 
 jobs:
